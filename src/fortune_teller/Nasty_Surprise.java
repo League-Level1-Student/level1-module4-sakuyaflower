@@ -59,5 +59,8 @@ public void actionPerformed(ActionEvent e) {
 		showPictureFromTheInternet("https://media.tenor.com/images/7dce6b8a8a705efa26db43985c5f014c/tenor.gif");
 		
 	}
+	if(JB == pressed) {
+		showPictureFromTheInternet("https://i.pinimg.com/originals/53/37/49/5337490ca1097befda8a3a81e0b77af4.jpg");
+	}
 }
 }
