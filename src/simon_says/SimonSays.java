@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
 import java.io.IOException;
 
 public class SimonSays extends KeyAdapter {
-
+	int s = 0;
 	HashMap<Integer, String> images = new HashMap<Integer, String>();
 	private int imageIndex;
 	private int tries = 0;
@@ -50,9 +50,10 @@ public static void main(String[] args) {
 	SimonSays ss = new SimonSays();
 	ss.run();
 }
-	public void keyPressed(KeyEvent e) {
+	
+public void keyPressed(KeyEvent e) {
 		// 15. Make a points variable to track the score.
-int s = 0;
+
 
 		// 16. If the keyCode matches the imageIndex and "Simon says"
 if(e.getKeyCode() == imageIndex) {
@@ -67,6 +68,7 @@ if(e.getKeyCode() != imageIndex) {
 tries++;
 if(tries > 10) {
 	JOptionPane.showMessageDialog(null, "Your score is" + s);
+	System.exit(0);
 }
 		// 17. Increase the value of score
 	
@@ -86,7 +88,7 @@ if(tries > 10) {
 		// 26. Tell the user their score
 
 		// 27. Exit the program
-System.exit(0);
+
 		// 23. Dispose of the frame
 JF.dispose();
 		// 24. Call the showImage method to show a new image
@@ -117,9 +119,11 @@ int t = r.nextInt(2);
 		// "Simon says press this key" or "Press this key"
 if(t == 0) {
 	speak("Simon says press this key.");
+	simonSays = true;
 }
 if(t == 1 ) {
 	speak("Press this key.");
+	simonSays = false;
 }
 		// 14. Above, set the value of simonSays to true/false appropriately
 
