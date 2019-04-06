@@ -25,6 +25,7 @@ JF.add(JP);
 JL.setFont(JL.getFont().deriveFont(28.0f));
 JL.setHorizontalAlignment(JL.CENTER);
 JF.addKeyListener(this);
+JL.setText(currentLetter +"");
 }
 
 char generateRandomLetter() {
@@ -42,12 +43,13 @@ public void keyTyped(KeyEvent e) {
 @Override
 public void keyPressed(KeyEvent e) {
 	// TODO Auto-generated method stub
-	currentLetter = generateRandomLetter();
+	
 }
 
 @Override
 public void keyReleased(KeyEvent e) {
 	// TODO Auto-generated method stub
-	
+	currentLetter = generateRandomLetter();
+	JL.setText(currentLetter +"");
 }
 }
