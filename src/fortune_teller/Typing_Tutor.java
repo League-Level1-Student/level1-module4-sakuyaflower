@@ -1,5 +1,6 @@
 package fortune_teller;
 
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Random;
@@ -26,6 +27,7 @@ JL.setFont(JL.getFont().deriveFont(28.0f));
 JL.setHorizontalAlignment(JL.CENTER);
 JF.addKeyListener(this);
 JL.setText(currentLetter +"");
+JP.add(JL);
 }
 
 char generateRandomLetter() {
@@ -43,7 +45,14 @@ public void keyTyped(KeyEvent e) {
 @Override
 public void keyPressed(KeyEvent e) {
 	// TODO Auto-generated method stub
-	
+	System.out.println(e.getKeyChar());
+	if(e.getKeyChar() == currentLetter) {
+		System.out.println("Correct :)");
+		JP.setBackground(Color.green);
+	}
+	else {
+		JP.setBackground(Color.RED);
+	}
 }
 
 @Override
