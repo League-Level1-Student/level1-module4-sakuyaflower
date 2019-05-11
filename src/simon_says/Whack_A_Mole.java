@@ -7,13 +7,17 @@ import java.awt.event.ActionListener;
 import java.util.Date;
 import java.util.Random;
 
+import javax.swing.JApplet;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import com.sun.media.jfxmedia.AudioClip;
+
 public class Whack_A_Mole implements ActionListener {
+	int t = 0;
 	JFrame JF = new JFrame("Whack a Button");
 	JPanel JP = new JPanel();
 	JLabel JL = new JLabel();
@@ -32,6 +36,8 @@ public class Whack_A_Mole implements ActionListener {
 	public static void main(String[] args) {
 		Whack_A_Mole mole = new Whack_A_Mole();
 		mole.setup();
+	
+
 	}
 
 	void speak(String words) {
@@ -51,9 +57,8 @@ public class Whack_A_Mole implements ActionListener {
 			JB.addActionListener(this);
 			if(t == i) {
 				JB.setText("MOLE!");
-			
 			}
-		
+			
 		}
 		
 	}
@@ -71,10 +76,20 @@ public class Whack_A_Mole implements ActionListener {
 			JP.add(JL);
 			makeButtons();
 			JF.setPreferredSize(new Dimension(370, 300));
-			speak("You missed");
-			endGame(d, 10);
+			
+			
+			
 		}
-			JF.pack();
+		else {
+			t++;
+			speak("You missed");
+			if(t>=5) {
+				endGame(d, 10);
+				
+			}
+			
+		}
+		JF.pack();
 		}
 	
 	private void endGame(Date timeAtStart, int molesWhacked) {
@@ -82,5 +97,10 @@ public class Whack_A_Mole implements ActionListener {
 	     JOptionPane.showMessageDialog(null, "Your whack rate is "
 	          + ((timeAtEnd.getTime() - timeAtStart.getTime()) / 1000.00 / molesWhacked)
 	          + " moles per second.");
+	     System.exit(0); 
+	}
+	private void playSound(String fileName) {
+	     java.applet.AudioClip sound = JApplet.newAudioClip(getClass().getResource(fileName));
+	     sound.play();
 	}
 }
